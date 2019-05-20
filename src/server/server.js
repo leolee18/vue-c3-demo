@@ -48,7 +48,7 @@ function mPost(urlStr,mObj){
 	return axios.post(
 		serAdd(urlStr),
 		form_data,
-		{headers:{'Content-Type': 'application/x-www-form-urlencoded'}},
+		{headers:{'Content-Type':'application/x-www-form-urlencoded'}},
 	).then((response)=>{return response.data});
 }
 
