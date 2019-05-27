@@ -9,7 +9,9 @@
 	import { get, post } from '@/server/maxios.js'
 	export default {
 		mounted() {
-			post('http://51coach.com/wwlyweb/interface/all.php',{})
+			post('http://51coach.com/wwlyweb/interface/all.php',{type: 1}).then(data=>{
+				console.log(data)
+			})
 		},
 		methods: {
 			

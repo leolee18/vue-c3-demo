@@ -1,87 +1,70 @@
 import axios from 'axios';
+import qs from 'qs';
 
 axios.interceptors.request.use(
   config => {
-    // 判断是否是提交文件，还是常规请求
     if (config.data instanceof FormData) {
       config.headers = {
-        'Content-Type': 'multipart/form-data' // 此处格式自定义
+        'Content-Type': 'multipart/form-data'
       }
     } else {
-      config.data = JSON.stringify(config.data)
+      config.data = JSON.stringify(config.data);
       config.headers = {
-        'Content-Type': 'application/x-www-form-urlencoded', // 此处格式自定义
-        /* token: getLocalStorage('token') */
+        'Content-Type': 'application/x-www-form-urlencoded'
       }
     }
-    config.withCredentials = true
-    config.timeout = 5000    // 超时时间
-    return config
+    //config.withCredentials = true；
+    config.timeout = 5000;
+    return config;
   },
   error => {
-    return Promise.reject(error)
+    return Promise.reject(error);
   }
 )
 axios.interceptors.response.use(
   res => {
-    let data = res.data
-    if (res.statusCode !== 200) {
-      if (data.failureReason === 4011 || data.failureReason === 4012) {
-        console.log('需要重新登录')
+    let data = res.data;
+    if (res.status === 200) {
+      if (data.status == 'success') {
+        return data;
+      } else {
+        return Promise.reject(data);
       }
     } else {
-      if (data.resultStates === 0) {
-        return data
-      } else {
-        return Promise.reject(data)
-      }
+			console.log('接口出问题了');
     }
   },
-  error => {
-    /* notification['error']({
-      message: '提示',
-      duration: 2,
-      description: '后台报错'
-    }) */
-    // 对响应错误做点什么
-    return Promise.reject(error)
+  error => {		console.log('网络或者地址问题');
+    return Promise.reject(error);
   }
 )
 
 export function get (url, params = {}) {
   return new Promise((resolve, reject) => {
-    axios
-      .get(url, {
-        params: params
-      })
+    axios.get(url, {
+        params: params,
+				paramsSerializer:params => {
+					return qs.stringify(params, { indices: false })
+			}})
       .then(response => {
-        if (response.success) {
-          resolve(response.data)
-        }
+        resolve(response);
       })
       .catch(err => {
-        reject(err)
-      })
+        reject(err);
+      }
+		)
   })
 }
 
-/**
- * 封装post请求
- * @param url
- * @param data
- * @returns {Promise}
- */
 export function post (url, data = {}) {
+	let mData =  qs.stringify(data,{ indices: false });
   return new Promise((resolve, reject) => {
-    axios.post(url, data).then(
+    axios.post(url, mData).then(
       response => {
-				console.log(response)
-        /* if (response.success) {
-          resolve(response.data)
-        } */
+				resolve(response);
       },
       err => {
-        reject(err)
+        reject(err);
       }
     )
   })
