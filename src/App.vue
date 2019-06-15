@@ -28,4 +28,12 @@
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+
+/* 设置全局box-sizing */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
 </style>
