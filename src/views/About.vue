@@ -3,6 +3,10 @@
     <h1>This is an about page</h1>
 		<div class="abo-ccsl">枯士大夫士大夫士大夫士大夫士大夫士大夫士大夫士大夫士大夫</div>
 		<div class="abo-lddq">枯士大</div>
+		<div class="container">
+				<div class="wave"></div>
+				<div class="wave-mask"></div>
+		</div>
   </div>
 </template>
 
@@ -38,5 +42,47 @@
 		border: 1px solid red;
     text-align: justify;
     text-align-last:justify
+	}
+	
+	
+	.container {
+			width: 116px;
+			height: 116px;
+			border-radius: 50%;
+			border: 3px solid #67c23a;
+			background: #ffffff;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			padding: 5px;
+			overflow: hidden;
+	}
+	.wave {
+			position: relative;
+			width: 100px;
+			height: 100px;
+			background-image: linear-gradient(-180deg, #aaff80 13%, #67c23a 91%);
+			border-radius: 50%;
+	}
+	.wave-mask {
+			position: absolute;
+			width: 200px;
+			height: 200px;
+			top: 0;
+			left: 50%;
+			border-radius: 40%;
+			background-color: rgba(255, 255, 255, 0.9);
+			transform: translate(-50%, -60%) rotate(0);
+			animation: toRotate 10s linear -5s infinite;
+			z-index: 20;
+	}
+	@keyframes toRotate {
+		50% {
+			transform: translate(-50%, -60%) rotate(180deg);
+		}
+		100% {
+			transform: translate(-50%, -60%) rotate(360deg);
+		}
 	}
 </style>
