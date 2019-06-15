@@ -7,6 +7,7 @@
 				<div class="wave"></div>
 				<div class="wave-mask"></div>
 		</div>
+		<div class="abo-dd">200</div>
   </div>
 </template>
 
@@ -84,5 +85,23 @@
 		100% {
 			transform: translate(-50%, -60%) rotate(360deg);
 		}
+	}
+	
+	.abo-dd{
+		position: absolute;
+		height: 100px;
+		padding: 0 30px;
+		left: 0;
+		display: inline-block;
+		border-radius: 50px;
+		font-size: 30px;
+		line-height: 100px;
+		color: #fff;
+		overflow: hidden;
+		background-color: #f00;
+	}
+	.abo-dd:empty{
+		display: none;
+		background-color: #eee;
 	}
 </style>
