@@ -8,17 +8,22 @@
 				<div class="wave-mask"></div>
 		</div>
 		<div class="abo-dd">200</div>
+		<ring-loading rotnum="380"></ring-loading>
   </div>
 </template>
 
 <script>
 	//测试新接口封装
 	import { get, post } from '@/server/maxios.js'
+	import ringLoading from '@/components/ringLoading.vue'
 	export default {
 		mounted() {
 			post('http://51coach.com/wwlyweb/interface/all.php',{type: 1}).then(data=>{
 				console.log(data)
 			})
+		},
+		components:{
+			ringLoading
 		},
 		methods: {
 			
@@ -104,4 +109,5 @@
 		display: none;
 		background-color: #eee;
 	}
+	
 </style>
