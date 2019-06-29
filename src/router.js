@@ -26,6 +26,11 @@ export default new Router({
       name: 'longlist',
       component: () => import('@/views/longList.vue')
     },
+		{
+      path: '/editor',
+      name: 'editor',
+      component: () => import('@/views/QuillEditor.vue')
+    },
     {
       path: '/home',
       name: 'home',
