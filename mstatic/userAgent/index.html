@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>手机型号</title>
+	</head>
+	<body>
+	</body>
+	<script>
+		//http://www.fynas.com/ua
+		//userAgent  大全
+		var ua = navigator.userAgent.split("(")[1].split(")")[0];
+		var brand = "";
+		var phone = [/IPHONE/gi, /huawei/gi, /mi/gi, /vivo/gi, /OPPO/gi, /samsung/gi, /SONY/gi, /Nokia/gi, /HTC/gi, /ZTE/gi, /Lenovo/gi, /ZUK/gi,]
+		if (phone[0].test(ua)) {
+				brand = "iPhone";
+		} else if (phone[1].test(ua)) {
+				brand = "HUAWEI";
+		} else if (phone[2].test(ua)) {
+				brand = "小米";
+		} else if (phone[3].test(ua)) {
+				brand = "vivo";
+		} else if (phone[4].test(ua)) {
+				brand = "OPPO";
+		} else if (phone[5].test(ua)) {
+				brand = "SAMSUNG";
+		} else if (phone[6].test(ua)) {
+				brand = "SONY";
+		} else if (phone[7].test(ua)) {
+				brand = "Nokia";
+		} else if (phone[8].test(ua)) {
+				brand = "HTC";
+		} else if (phone[9].test(ua)) {
+				brand = "ZTE";
+		} else if (phone[10].test(ua) || phone[11].test(ua)) {
+				brand = "Lenovo";
+		} else {
+				brand = "Android";
+		}
+		console.log(brand )
+		
+		$clientkeywords = array(
+			'nokia', 'sony', 'ericsson', 'mot', 'samsung', 'htc', 'sgh', 'lg', 'sharp', 'sie-'
+			,'philips', 'panasonic', 'alcatel', 'lenovo', 'iphone', 'ipod', 'blackberry', 'meizu', 
+			'android', 'netfront', 'symbian', 'ucweb', 'windowsce', 'palm', 'operamini', 
+			'operamobi', 'opera mobi', 'openwave', 'nexusone', 'cldc', 'midp', 'wap', 'mobile'
+			);
+	</script>
+</html>
