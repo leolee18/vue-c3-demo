@@ -16,11 +16,47 @@
 	//测试新接口封装
 	import { get, post } from '@/server/maxios.js'
 	import ringLoading from '@/components/ringLoading.vue'
+	import BinarySearchTree from '@/server/BinarySearchTree.js'
 	export default {
 		mounted() {
 			post('http://51coach.com/wwlyweb/interface/all.php',{type: 1}).then(data=>{
 				console.log(data)
 			})
+			
+			const tree = new BinarySearchTree();
+			tree.insert(11);
+			tree.insert(7);
+			tree.insert(5);
+			tree.insert(3);
+			tree.insert(9);
+			tree.insert(8);
+			tree.insert(10);
+			tree.insert(13);
+			tree.insert(12);
+			tree.insert(14);
+			tree.insert(20);
+			tree.insert(18);
+			tree.insert(25);
+			console.log(tree);
+
+			console.log(tree.root);
+			//中序遍历BST
+			console.log(tree.inOrder());
+			//前序遍历BST
+			console.log(tree.preOrder());
+			//后序遍历BST
+			console.log(tree.postOrder());
+			//搜索最小值
+			console.log(tree.getMin());
+			//搜索最大值
+			console.log(tree.getMax());
+			
+			//查找特定值
+			console.log(tree.find(2));
+			console.log(tree.find(3));
+			console.log(tree.find(20));
+			
+			
 		},
 		components:{
 			ringLoading
