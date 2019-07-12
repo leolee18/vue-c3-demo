@@ -17,6 +17,9 @@
 	import { get, post } from '@/server/maxios.js'
 	import ringLoading from '@/components/ringLoading.vue'
 	import BinarySearchTree from '@/server/BinarySearchTree.js'
+	import BinarySearch from '@/server/BinarySearch.js'
+	import SingleLinkedList from '@/server/SingleLinkedList.js'
+	import DoubleLinkedList from '@/server/DoubleLinkedList.js'
 	export default {
 		mounted() {
 			post('http://51coach.com/wwlyweb/interface/all.php',{type: 1}).then(data=>{
@@ -56,6 +59,24 @@
 			console.log(tree.find(3));
 			console.log(tree.find(20));
 			
+			let arr = [0, 1, 2, 4, 5, 6, 7, 8];
+			let arr2 = [88, 77, 66, 55, 44, 33, 22, 11];
+			BinarySearch(arr2, 77);
+			BinarySearch(arr, 2);
+			
+			var l = new SingleLinkedList();
+			l.insert("a","head");
+			l.insert("b","a");
+			l.insert("c","b");
+			l.remove("b");
+			l.show();
+			
+			var li = new DoubleLinkedList();
+			li.insert("1","head");
+			li.insert("2","1");
+			li.insert("3","2");
+			li.insert("4","3");
+			li.show();
 			
 		},
 		components:{
