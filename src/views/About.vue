@@ -25,7 +25,7 @@
 			post('http://51coach.com/wwlyweb/interface/all.php',{type: 1}).then(data=>{
 				console.log(data)
 			})
-			
+			//
 			const tree = new BinarySearchTree();
 			tree.insert(11);
 			tree.insert(7);
