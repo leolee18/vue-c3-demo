@@ -22,7 +22,7 @@
 	import DoubleLinkedList from '@/server/DoubleLinkedList.js'
 	export default {
 		mounted() {
-			post('http://51coach.com/wwlyweb/interface/all.php',{type: 1}).then(data=>{
+			post('interface/all.php',{type: 1}).then(data=>{
 				console.log(data)
 			})
 			//
